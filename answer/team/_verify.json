@@ -1,0 +1,56 @@
+{
+  "desc": "팀 모의 실행 결과물 자동 검사 — 임시 폴더에 복사해 수용 기준 스크립트와 통합 도구를 실행한다",
+  "run": [
+    "python",
+    "tests/run_acceptance.py"
+  ],
+  "expect_exit": 0,
+  "expect_stdout": [
+    "실패 0건"
+  ],
+  "required": [
+    "CLAUDE.md",
+    "README.md",
+    "prd/team_prd.md",
+    "docs/project_card.md",
+    "docs/team_decisions.md",
+    "docs/team_plan.md",
+    "docs/design.md",
+    "docs/issues_draft/1.md",
+    "docs/issues_draft/2.md",
+    "docs/issues_draft/3.md",
+    "docs/issues_draft/4.md",
+    "docs/demo_script.md",
+    "data/team_sample.csv",
+    "data/notice_dates.csv",
+    "tests/acceptance.md",
+    "tests/run_acceptance.py",
+    "scripts/main.py",
+    "scripts/notice_version.py",
+    "scripts/reply_deadline.py",
+    "README_강사.md",
+    "_진행기록.md"
+  ],
+  "trap_row": {
+    "file": "data/team_sample.csv",
+    "id": "T-12",
+    "line": 13
+  },
+  "same_prd_as": "../m5/prd/m5_my_prd.md",
+  "also_run": [
+    {
+      "run": [
+        "python",
+        "scripts/main.py",
+        "data/team_sample.csv"
+      ],
+      "expect_exit": 0,
+      "expect_stdout": [
+        "[적용공고] 대조 19행 · 일치 15 · 불일치 4",
+        "[적용공고] 기준 공고별: v1 2 · v2 6 · v3 11",
+        "[답변 기한] 기준일 2026-11-13 · 기한 7일 · 미답변 10 · 기한 지남 5",
+        "담당 검토 후 확정"
+      ]
+    }
+  ]
+}
